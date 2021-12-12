@@ -1,25 +1,42 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { Checkbox, TextInput } from "react-native-paper";
-import { PRIMARY_COLOR, SECONDY_COLOR } from "../../Themes/themeColors";
-import { Title } from 'react-native-paper';
+import { StyleSheet, Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import { PRIMARY_COLOR, WHITE_COLOR } from "../../Themes/themeColors";
 
 const icon = require("../../assets/icon.png");
-const LogInScreen = () => 
-{
+const LogInScreen = (props) => {
+  const { setAuthToken } = props;
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   return (
     <View style={styles.MainScreen}>
-      <View style={styles.LogoArea}>
-      </View>
-     <View style={styles.InputArea}>
-        <TextInput mode="outlined" style={styles.textInput} label="Email" />
-        <TextInput mode="outlined" style={styles.textInput} label="Password" />
+      <View style={styles.LogoArea}></View>
+      <View style={styles.InputArea}>
+        <TextInput
+          mode="outlined"
+          style={styles.textInput}
+          label="Email"
+          onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          mode="outlined"
+          style={styles.textInput}
+          label="Password"
+          onChangeText={(text) => setPassword(text)}
+        />
+        <Text>Password or Username is wrong! </Text>
       </View>
       <View style={styles.ButtonArea}>
-        <Checkbox mode="outlined" style={styles.Checkbox} label="Remember Me" />
-        <Title mode="outlined" style={styles.Title} label="LogIn" />
-        <Title mode="outlined" style={styles.Title} label="Sign Up" />
-        <Checkbox mode="outlined" style={styles.Checkbox} label="Keep me signed in" />
+        <Button
+          icon="camera"
+          mode="contained"
+          disabled={email.length === 0 || password.length === 0}
+          onPress={() => {}}
+          style={styles.Button}
+        >
+          Log In
+        </Button>
       </View>
     </View>
   );
@@ -28,65 +45,45 @@ const LogInScreen = () =>
 //finish loading screen, with react native paper button for login,
 // add some props to the text-input so that you can tell what each input is
 
-
-const styles = StyleSheet.create
-({
-  MainScreen: 
-  {
+const styles = StyleSheet.create({
+  MainScreen: {
     flex: 1,
     backgroundColor: "#FFFFFF",
   },
-  LogoArea: 
-  {
-    flex: 1,
+  LogoArea: {
+    flex: 0.5,
     flexDirection: "row",
     justifyContent: "center",
     alignContent: "center",
     backgroundColor: PRIMARY_COLOR,
   },
-  ButtonArea: 
-  {
-    flex: 2,
-    backgroundColor: SECONDY_COLOR,
+  ButtonArea: {
+    flex: 0.5,
+    backgroundColor: WHITE_COLOR,
     justifyContent: "center",
   },
-  InputArea: 
-  {
-    flex: 2,
-    backgroundColor: PRIMARY_COLOR,
+  InputArea: {
+    flex: 0.5,
+    backgroundColor: WHITE_COLOR,
     justifyContent: "center",
   },
-  textInput: 
-  {
+  textInput: {
+    alignContent: "center",
     marginLeft: 20,
     marginRight: 20,
   },
-  Checkbox:
-  {
+  Checkbox: {
     marginLeft: 15,
     marginRight: 18,
   },
-  Title:
-  {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
+  Button: {
+    height: 50,
   },
-  Title_2:
-  {
-    flex: 2,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  Checkbox_2:
-  {
+
+  Checkbox_2: {
     marginLeft: 18,
     marginRight: 15,
-  }
-
-
+  },
 });
 
 export default LogInScreen;
