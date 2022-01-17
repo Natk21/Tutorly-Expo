@@ -18,7 +18,9 @@ const LogInScreen = (props) => {
   const { navigation } = props;
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const handleForgotPasswordPress = () => console.log("Button Pressed");
+  const handleForgotPasswordPress = () => {
+    console.log("Button Pressed");
+  }; //change this to be navigate(routes.ForgotPassword..), see below in handeRegButtonFunction
 
   const handleRegButton = () => {
     navigation.navigate(routes.SIGNUP);
