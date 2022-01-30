@@ -1,6 +1,9 @@
 export default Object.freeze({
-  LOGIN: "Login",
-  SIGNUP: "SignUp",
-  FORGOT: "ForgotPassword",
+  Login: "Login",
+  Signup: "SignUp",
+  Forgot: "ForgotPassword",
   Main: "Main",
+  Account: "Account",
+  Settings: "Settings",
+  Meetings: "Meetings",
 });

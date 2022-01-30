@@ -3,57 +3,43 @@ import {
   Dimensions,
   Image,
   Platform,
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   View,
-  }from "react-native";
+} from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import routes from "../navigation/routes";
 import { WHITE_COLOR } from "../Themes/themeColors";
-import { NavigationContainer } from "@react-navigation/native";
-import ForgotPassword from "./ForgotPassword_Screen";
 
 const icon = require("../assets/icon.png");
-const LogInScreen = (props) => 
-{
-  const { navigation } = props;
+const LogInScreen = (props) => {
+  const { navigation, setAuthToken } = props;
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const handleForgotPasswordPress = () => 
-  {
-    navigation.navigate(routes.ForgotPassword);
-  }; 
+  const handleForgotPasswordPress = () => {
+    navigation.navigate(routes.Forgot);
+  };
 
-  const handleRegisterPress = () => 
-  {
-    navigation.navigate(routes.SIGNUP);
-  }; 
-  const handleLogInPress = () =>
-  {
-    navigation.navigate(routes.MainScreen)
+  const handleRegisterPress = () => {
+    navigation.navigate(routes.Signup);
+  };
+  const handleLogInPress = () => {
+    setAuthToken("newToken");
   };
   console.log(Dimensions.get("screen"));
 
   return (
     <View style={styles.MainScreen}>
-      <SafeAreaView style={styles.LogoArea}>
-      <Text 
-      style={styles.TextSize}
-      
-      >
-      Welcome Back
-      <Text>
+      <Text style={styles.TextSize}>Welcome Back</Text>
 
-        <Image
-          source={{
-            width: 250,
-            height: 200,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </SafeAreaView>
+      <Image
+        source={{
+          width: 250,
+          height: 200,
+          uri: "https://picsum.photos/200/300",
+        }}
+      />
 
       <View style={styles.InputArea}>
         <TextInput
@@ -74,25 +60,16 @@ const LogInScreen = (props) =>
           icon="camera"
           mode="contained"
           disabled={email.length === 0 || password.length === 0}
-          onPress={() => {}}
+          onPress={handleLogInPress}
           style={styles.Button}
           contentStyle={styles.ButtonContent}
-          onPress = {handleLogInPress}
         >
           Log In
         </Button>
 
-        <Button
-          onPress={handleRegisterPress}
-        >
-          Sign Up
-        </Button>
-        
-        <Button
-          onPress={handleForgotPasswordPress} 
-        >
-          Forgot Password?
-        </Button>
+        <Button onPress={handleRegisterPress}>Sign Up</Button>
+
+        <Button onPress={handleForgotPasswordPress}>Forgot Password?</Button>
       </View>
     </View>
   );
@@ -107,10 +84,8 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   LogoArea: {
-    TextSize: 
-    {
-      fontSize : 20
-    },
+    fontSize: 20,
+
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
@@ -145,3 +120,20 @@ const styles = StyleSheet.create({
 });
 
 export default LogInScreen;
+
+// const () => {
+
+//   <AppScreen>
+//   <SafeArea>
+//   {...Children}
+//   </SafeArea>
+//   </AppScreen>
+// }
+
+// const AppText =(props) => {
+//   {message, colorOfText} = props
+//   return () {
+
+//    <Text style = {textColor: colorOfText}>{message}<Text/>
+//   }
+// }
