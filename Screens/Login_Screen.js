@@ -8,30 +8,43 @@ import {
   StyleSheet,
   Text,
   View,
-} from "react-native";
+  }from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import routes from "../navigation/routes";
 import { WHITE_COLOR } from "../Themes/themeColors";
+import { NavigationContainer } from "@react-navigation/native";
+import ForgotPassword from "./ForgotPassword_Screen";
 
 const icon = require("../assets/icon.png");
-const LogInScreen = (props) => {
+const LogInScreen = (props) => 
+{
   const { navigation } = props;
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const handleForgotPasswordPress = () => {
-    console.log("Button Pressed");
-  }; //change this to be navigate(routes.ForgotPassword..), see below in handeRegButtonFunction
+  const handleForgotPasswordPress = () => 
+  {
+    navigation.navigate(routes.ForgotPassword);
+  }; 
 
-  const handleRegButton = () => {
+  const handleRegisterPress = () => 
+  {
     navigation.navigate(routes.SIGNUP);
-  }; //this is just the layout for function
-
+  }; 
+  const handleLogInPress = () =>
+  {
+    navigation.navigate(routes.MainScreen)
+  };
   console.log(Dimensions.get("screen"));
 
   return (
     <View style={styles.MainScreen}>
       <SafeAreaView style={styles.LogoArea}>
-        <Text>Welcome Back</Text>
+      <Text 
+      style={styles.TextSize}
+      
+      >
+      Welcome Back
+      <Text>
 
         <Image
           source={{
@@ -64,16 +77,19 @@ const LogInScreen = (props) => {
           onPress={() => {}}
           style={styles.Button}
           contentStyle={styles.ButtonContent}
+          onPress = {handleLogInPress}
         >
           Log In
         </Button>
+
         <Button
-          onPress={handleRegButton} //make this appear
+          onPress={handleRegisterPress}
         >
-          Register
+          Sign Up
         </Button>
+        
         <Button
-          onPress={handleForgotPasswordPress} //make this appear
+          onPress={handleForgotPasswordPress} 
         >
           Forgot Password?
         </Button>
@@ -91,6 +107,10 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   LogoArea: {
+    TextSize: 
+    {
+      fontSize : 20
+    },
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
