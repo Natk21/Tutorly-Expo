@@ -3,7 +3,11 @@ export default Object.freeze({
   Signup: "SignUp",
   Forgot: "ForgotPassword",
   Main: "Main",
+  Home: "Home",
   Account: "Account",
   Settings: "Settings",
   Meetings: "Meetings",
+  HomeStack: "HomeStack",
+  CreateStack: "CraeteStack",
+  SearchStack: "SearchStack",
 });

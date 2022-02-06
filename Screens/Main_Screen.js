@@ -1,99 +1,60 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { StyleSheet,Text,Button,  } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+import MeetingsListItem from "../Components/MeetingsListItem";
 import routes from "../navigation/routes";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import User from "./Profile";
-import AccountScreen from "./Account_Screen";
-
 
 const Tab = createBottomTabNavigator();
 
-const MainScreen = (props) => 
-{
-  
+const FakeMeetingData = [
+  {
+    instructorName: "Dr. John Doe",
+    meetingName: "Meeting 1",
+    date: "2020-06-01",
+  },
+  {
+    instructorName: "Pew Pew Instructor",
+    meetingName: "Meeting 2",
+    date: "2020-06-01",
+  },
+];
+
+const MainScreen = (props) => {
+  const myRenderItem = ({ item }) => <MeetingsListItem meeting={item} />;
   const handleSettingsPress = () => {
     navigation.navigate(routes.SettingsScreen);
   };
 
-   return
-   (
-
-    <Button
-      icon = "widget"
-      style = {style.Setting_Icon}
-      onPress = {handleSettingsPress}
-
-    >
-
-    </Button>
-
-    <Tab.Navigator
-      initialRouteName= "Feed"
-    
-    >
-    <Tab.Screen 
-      name="Home" 
-      component={MainScreen} 
-      options = 
-      {{
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ color, size }) => 
-        (
-          <MaterialCommunityIcons name="home" color={color} size={size} />
-        ),
-      }}
+  return (
+    <FlatList
+      style={{ flex: 1 }} //red color
+      data={FakeMeetingData}
+      renderItem={myRenderItem}
+      keyExtractor={(item) => item.date}
     />
-    <Tab.Screen
-    name = "Meetings"
-    component={MeetingsScreen}
-    options = 
-    {{
-      tabBarLabel: 'Meetings',
-      tabBarIcon: ({ color, size }) => 
-        (
-          <MaterialCommunityIcons name= "Laptop" color={color} size={size} />
-        ),
-
-    }}
-    
-    />
-    <Tab.Screen
-      name = "Profile"
-      component = {AccountScreen}
-      options = 
-      {{
-        tabBarLabel: Profile,
-        tabBarIcon: ({ color, size }) =>
-        (
-          <MaterialCommunityIcons name = "torso" color = {color} size = {size} />
-        )
-      }}
-    
-    />
-    
-    </Tab.Navigator>
-
-
-       <Tab.Screen name="Meetings" component={MeetingsScreen} />
-         <Tab.Screen name ="On Demand" component ={OnDemandScreen} />
-
-  );   
+  );
 };
 
-const styles = StyleSheet.create
-({
-  ButtonArea: 
-  {
+const styles = StyleSheet.create({
+  ButtonArea: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
   },
-  Setting_Icon: 
-  {
+  Setting_Icon: {
     justifyContent: "flex-start",
   },
-
 });
 
 export default MainScreen;
+
+// {
+//   /* <>
+// {fakeData.map((item) => (
+//   <Button key={item.id}>{"My Meeting " + item.name}</Button>
+// ))}
+// {fakeData.map((item) => (
+//   <Text key={item.id}>{"My Meeting " + item.name}</Text>
+// ))}
+// </> */
+// }

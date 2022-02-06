@@ -1,11 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import AccountScreen from "../Screens/Account_Screen";
 import ForgotPasswordScreen from "../Screens/ForgotPassword_Screen";
 import LogInScreen from "../Screens/Login_Screen";
-import MainScreen from "../Screens/Main_Screen";
-import MeetingsScreen from "../Screens/Meetings_Screen";
-import SettingsScreen from "../Screens/Setting_Screen";
 import SignUpScreen from "../Screens/SignUp_Screen";
 import routes from "./routes";
 
@@ -31,7 +27,7 @@ function AuthStack(props) {
         component={ForgotPasswordScreen}
       />
       {}
-      </Stack.Navigator>
+    </Stack.Navigator>
   );
 }
 
