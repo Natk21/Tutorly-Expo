@@ -9,3 +9,31 @@
 //work on the screens that do currently..
 
 //for next figure your home screen, like what it should hold, bonus is if you can point to the components from paper.lib
+
+<Stack.Navigator>
+<Stack.Screen
+    options={{ title: "Main Page", headerShown: false }}
+    name={routes.Main}
+    component={MainScreen}
+/>
+
+<Stack.Screen
+    options={{ title: "Account", headerShown: false }}
+    name={routes.Account}
+    component={AccountScreen}
+/>
+<Stack.Screen
+    options={{ title: "Settings", headerShown: false }}
+    name={routes.Settings}
+    component={SettingsScreen}
+ />
+
+<Stack.Screen
+    options={{ title: "Meetings", headerShown: false }}
+    name={routes.Meetings}
+    component={MeetingsScreen}
+/>
+
+</Stack.Navigator>
+
+export default MainStack;

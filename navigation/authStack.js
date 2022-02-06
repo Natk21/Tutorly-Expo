@@ -26,34 +26,12 @@ function AuthStack(props) {
         component={SignUpScreen}
       />
       <Stack.Screen
-        options={{ title: "Main Page", headerShown: false }}
-        name={routes.Main}
-        component={MainScreen}
-      />
-      <Stack.Screen
         options={{ title: "Forgot Password", headerShown: true }}
         name={routes.Forgot}
         component={ForgotPasswordScreen}
       />
-      <Stack.Screen
-        options={{ title: "Account", headerShown: false }}
-        name={routes.Account}
-        component={AccountScreen}
-      />
-      <Stack.Screen
-        options={{ title: "Settings", headerShown: false }}
-        name={routes.Settings}
-        component={SettingsScreen}
-      />
-
-      <Stack.Screen
-        options={{ title: "Meetings", headerShown: false }}
-        name={routes.Meetings}
-        component={MeetingsScreen}
-      />
-
-      {/* add the forgotpassword stackscreen, dont forgot to make the actual screen called FogotPassword */}
-    </Stack.Navigator>
+      {}
+      </Stack.Navigator>
   );
 }
 

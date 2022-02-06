@@ -1,57 +1,99 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet,Text,Button,  } from "react-native";
 import routes from "../navigation/routes";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import User from "./Profile";
+import AccountScreen from "./Account_Screen";
 
-const MainScreen = (props) => {
-  const handleAccountPress = () => {
-    navigation.navigate(routes.AccountScreen);
-  };
+
+const Tab = createBottomTabNavigator();
+
+const MainScreen = (props) => 
+{
+  
   const handleSettingsPress = () => {
     navigation.navigate(routes.SettingsScreen);
   };
 
-  return <></>;
+   return
+   (
 
-  // return
-  // (
+    <Button
+      icon = "widget"
+      style = {style.Setting_Icon}
+      onPress = {handleSettingsPress}
 
-  //       <Button
-  //         icon = "camera"
-  //         style={styles.User_Icon}
-  //         onPress={handleAccountPress}
+    >
 
-  //       >
+    </Button>
 
-  //       </Button>
+    <Tab.Navigator
+      initialRouteName= "Feed"
+    
+    >
+    <Tab.Screen 
+      name="Home" 
+      component={MainScreen} 
+      options = 
+      {{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color, size }) => 
+        (
+          <MaterialCommunityIcons name="home" color={color} size={size} />
+        ),
+      }}
+    />
+    <Tab.Screen
+    name = "Meetings"
+    component={MeetingsScreen}
+    options = 
+    {{
+      tabBarLabel: 'Meetings',
+      tabBarIcon: ({ color, size }) => 
+        (
+          <MaterialCommunityIcons name= "Laptop" color={color} size={size} />
+        ),
 
-  //       <Button
-  //         icon = "camera"
-  //         style = {style.Setting_Icon}
-  //         onPress = {handleSettingsPress}
+    }}
+    
+    />
+    <Tab.Screen
+      name = "Profile"
+      component = {AccountScreen}
+      options = 
+      {{
+        tabBarLabel: Profile,
+        tabBarIcon: ({ color, size }) =>
+        (
+          <MaterialCommunityIcons name = "torso" color = {color} size = {size} />
+        )
+      }}
+    
+    />
+    
+    </Tab.Navigator>
 
-  //       >
 
-  //       </Button>
+       <Tab.Screen name="Meetings" component={MeetingsScreen} />
+         <Tab.Screen name ="On Demand" component ={OnDemandScreen} />
 
-  //     <Tab.Navigator>
-  //       <Tab.Screen name="Home" component={MainScreen} />
-  //       <Tab.Screen name="Meetings" component={MeetingsScreen} />
-  //       <Tab.Screen name ="On Demand" component ={OnDemandScreen} />
-  //     </Tab.Navigator>
+  );   
 };
 
-const styles = StyleSheet.create({
-  ButtonArea: {
+const styles = StyleSheet.create
+({
+  ButtonArea: 
+  {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
   },
-  User_Icon: {
-    justifyContent: "flex-end",
-  },
-  Setting_Icon: {
+  Setting_Icon: 
+  {
     justifyContent: "flex-start",
   },
+
 });
 
 export default MainScreen;

@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import AuthStack from "./navigation/authStack";
+import MainStack from "./navigation/mainStack";
 
 export default function App() {
   const [authToken, setAuthToken] = useState(null);
@@ -18,4 +19,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
-///{authToken ? <MainStack setAuthToken={setAuthToken} />: <AuthStack setAuthToken={setAuthToken} />}
+{authToken ? <MainStack setAuthToken={setAuthToken} />: <AuthStack setAuthToken={setAuthToken} />}
