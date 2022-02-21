@@ -3,7 +3,7 @@ import React from "react";
 
 const Stack = createNativeStackNavigator();
 
-function CreateStack(props) {
+function ProfileStack(props) {
   const { setAuthToken } = props;
 
   return <></>;
@@ -19,4 +19,4 @@ function CreateStack(props) {
 </Stack.Navigator> */
 }
 
-export default CreateStack;
+export default ProfileStack;

@@ -8,6 +8,7 @@ export default Object.freeze({
   Settings: "Settings",
   Meetings: "Meetings",
   HomeStack: "HomeStack",
-  CreateStack: "CraeteStack",
-  SearchStack: "SearchStack",
+  ProfileStack: "ProfileStack",
+  MeetingsStack: "MeetingsStack",
+  CoursesStack: "CoursesStack"
 });

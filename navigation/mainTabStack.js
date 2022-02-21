@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import CreateStack from "./createStack";
+import CreateStack from "./profileStack";
 import HomeStack from "./homeStack";
 import routes from "./routes";
-import SearchStack from "./searchStack";
+import SearchStack from "./meetingsStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,25 +24,39 @@ function MainTabStack(props) {
         }}
       />
       <Tab.Screen
-        name={routes.CreateStack}
-        component={CreateStack}
+        name={routes.ProfileStack}
+        component={ProfileStack}
         options={{
-          tabBarLabel: "Create",
+          tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="pencil" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name={routes.SearchStack}
-        component={SearchStack}
+        name={routes.MeetingsStack}
+        component={MeetingsStack}
         options={{
-          tabBarLabel: "Search",
+          tabBarLabel: "Meetings",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="wifi" color={color} size={size} />
           ),
         }}
       />
+      <Tab.Screen
+        name  = {routes.CoursesStack}
+        component = {CoursesStack}
+        options= {{
+          tabBarLabel: "Learn",
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons name = "wifi" color = {color} size={size} />
+          ),
+        }}
+      
+      />
+
+
+  
     </Tab.Navigator>
   );
 }

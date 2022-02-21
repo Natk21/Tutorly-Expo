@@ -32,11 +32,4 @@ function AuthStack(props) {
 }
 
 export default AuthStack;
-//<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-//copy this page into a new navigation folder file, call it mainStack, and decide what the first screen of this page would..
 
-//handleBack() {
-
-//navigation.navigate.goBack();
-//navigation.pop(1);
-//}
