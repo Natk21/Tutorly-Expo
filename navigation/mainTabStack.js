@@ -1,18 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import CreateStack from "./profileStack";
+import CoursesStack from "./coursesStack";
 import HomeStack from "./homeStack";
+import MeetingsStack from "./meetingsStack";
+import ProfileStack from "./profileStack";
 import routes from "./routes";
-import SearchStack from "./meetingsStack";
 
 const Tab = createBottomTabNavigator();
 
 function MainTabStack(props) {
   const { setAuthToken } = props;
-
+  const [x, setX] = React.useState(0);
   return (
-    <Tab.Navigator initialRouteName={routes.MainStack}>
+    <Tab.Navigator initialRouteName={routes.HomeStack}>
       <Tab.Screen
         name={routes.HomeStack}
         component={HomeStack}
@@ -44,19 +45,15 @@ function MainTabStack(props) {
         }}
       />
       <Tab.Screen
-        name  = {routes.CoursesStack}
-        component = {CoursesStack}
-        options= {{
+        name={routes.CoursesStack}
+        component={CoursesStack}
+        options={{
           tabBarLabel: "Learn",
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name = "wifi" color = {color} size={size} />
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="wifi" color={color} size={size} />
           ),
         }}
-      
       />
-
-
-  
     </Tab.Navigator>
   );
 }

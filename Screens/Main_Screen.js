@@ -1,87 +1,58 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
-import { FlatList, StyleSheet,ScrollView, SectionList, View, Text} from "react-native";
-import MeetingsListItem from "../Components/MeetingsListItem";
-import routes from "../navigation/routes";
+import React, { useEffect } from "react";
+import { SafeAreaView, SectionList, StyleSheet, Text } from "react-native";
+import { getMyMeetingsFromServer } from "../api/meetings/meetings.api";
+import MeetingListItem from "../Components/MeetingsListItem";
+import { WHITE_COLOR } from "../Themes/themeColors";
 
-const Tab = createBottomTabNavigator();
+const MainScreen = (props) => {
+  const [DATA, setDATA] = React.useState(null);
 
+  useEffect(() => {
+    const myMeetings = getMyMeetingsFromServer();
 
+    setDATA((prevousState) => myMeetings);
+  }, []);
 
-let usersScienceMeetings = [];
-let usersMathMeetings = [];
-let usersComputerScienceMeetings = [];
-let usersLanguageMeetings = [];
+  console.log("Rerender");
 
-const SortMeetings = (MeetingSubject) => 
-{
-  switch(MeetingSubject)
-  {
-    case 'Math':
-      usersMathMeetings.push()
-      break;
-    case 'Science':
-      usersScienceMeetings.push()
-      break;
-    case 'ComputerScience':
-      usersComputerScienceMeetings.push()
-      break;
-    case 'Language':
-      usersLanguageMeetings.push()
+  if (!DATA) return <Text>No DATA</Text>;
 
-  }
-}
-
-
-const MainScreen = (props) => 
-{
-  const myRenderItem = ({ item }) => <MeetingsListItem meeting={item} />;
-  const handleSettingsPress = () => 
-  {
-    navigation.navigate(routes.SettingsScreen);
-  };
-
-  return 
-  (
-    <View style = {styles.container}>
-    <SectionList>
-      sections=
-      {[
-          {title: 'Math', data: [usersMathMeetings]},
-          {title: 'Science', data: [usersScienceMeetings]},
-          {title: 'ComputerScience', data: [usersComputerScienceMeetings]},
-          {title: 'Language', data:[usersLanguageMeetings]}
-      ]}
-      renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-      renderSectionTitle={({section}) => <Text style={styles.sectionTitle}>{section.title}</Text>}
-
-    </SectionList>
-    </View>
+  return (
+    <SafeAreaView style={styles.container}>
+      <SectionList
+        sections={[{ title: "Math", data: DATA }]}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.SectionHeader}>{section.title}</Text>
+        )}
+        keyExtractor={(item, index) => item.id}
+        renderItem={({ item }) => <MeetingListItem meeting={item} />}
+      />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container:
-  {
+  container: {
     flex: 1,
-    paddingTop: 22, 
-    alignItems: "center"
+    paddingTop: "5%",
+    marginHorizontal: 16,
+    backgroundColor: WHITE_COLOR,
   },
-  sectionTitle:
-  {
-    paddingTop: 2,
-    paddingBottom: 2,
-    fontSize: 14,
-    backgroundColor: 'rgba(247,247,247,1.0)',
-  
-
-  },
-  item: 
-  {
-    paddingTop: 10,
+  SectionHeader: {
+    backgroundColor: WHITE_COLOR,
     fontSize: 20,
+    fontWeight: "bold",
+    padding: 10,
+    elevation: 4,
+    margin: 10,
+    marginBottom: 0,
+    borderRadius: 10,
+  },
+  item: {
+    backgroundColor: WHITE_COLOR,
+    padding: 20,
+    marginVertical: 8,
   },
 });
 
 export default MainScreen;
-

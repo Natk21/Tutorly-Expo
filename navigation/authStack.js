@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
 import ForgotPasswordScreen from "../Screens/ForgotPassword_Screen";
 import LogInScreen from "../Screens/Login_Screen";
 import SignUpScreen from "../Screens/SignUp_Screen";
@@ -32,4 +31,3 @@ function AuthStack(props) {
 }
 
 export default AuthStack;
-

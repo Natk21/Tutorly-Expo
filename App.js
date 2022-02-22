@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useState } from "react";
+import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import AuthStack from "./navigation/authStack";
 import MainTabStack from "./navigation/mainTabStack";
 
 export default function App() {
-  const [authToken, setAuthToken] = useState("asdfasd");
+  const [authToken, setAuthToken] = React.useState("asdfasd");
 
   return (
     <NavigationContainer
@@ -23,10 +23,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-// {
-//   authToken ? (
-//     <MainTabStack setAuthToken={setAuthToken} />
-//   ) : (
-//     <AuthStack setAuthToken={setAuthToken} />
-//   );
-// }

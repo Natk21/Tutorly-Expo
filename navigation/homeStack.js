@@ -2,12 +2,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import MainScreen from "../Screens/Main_Screen";
 import routes from "./routes";
-
 const Stack = createNativeStackNavigator();
 
 function HomeStack(props) {
   const { setAuthToken } = props;
-
+  const [x, setX] = React.useState(0);
   return (
     <Stack.Navigator initialRouteName={routes.Main}>
       <Stack.Screen
@@ -20,4 +19,3 @@ function HomeStack(props) {
 }
 
 export default HomeStack;
-
