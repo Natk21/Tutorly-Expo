@@ -17,27 +17,25 @@ export const filterBySubject = (meetings, subject) => {
 };
 
 export const sortBySubject = (meetings) => {
-  const sortedMeetings = {
-    Math: [],
-    Science: [],
-    ComputerScience: [],
-    Language: [],
-  };
-
-  for (const i = 0; i < meetings.length; i++) {
-    switch (meetings[i].subject) {
-      case "Math":
-        sortedMeetings.Math.push(meetings[i]);
-        break;
-      case "Science":
-        sortedMeetings.Science.push(meetings[i]);
-        break;
-      case "ComputerScience":
-        sortedMeetings.ComputerScience.push(meetings[i]);
-        break;
-      case "Language":
-        sortedMeetings.Language.push(meetings[i]);
+  const sortedMeetings = {};
+  console.log("Prefor", meetings);
+  for (let i = 0; i < meetings.length; i++) {
+    if (!sortedMeetings[meetings[i].subject]) {
+      //if yes, it means the array has alrady has been created
+      sortedMeetings[meetings[i].subject] = [];
     }
+    sortedMeetings[meetings[i].subject].push(meetings[i]);
   }
   return sortedMeetings;
+};
+
+export const createSectionData = (meetings) => {
+  const sortedData = sortBySubject(meetings);
+  const keys = Object.keys(sortedData); // ["Math", "Science", "ComputerScience", "Language"]
+  const sections = [];
+  for (const key of keys) {
+    sections.push({ title: key, data: sortedData[key] });
+  }
+
+  return sections;
 };

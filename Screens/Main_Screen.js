@@ -1,42 +1,35 @@
 import React, { useEffect } from "react";
 import { SafeAreaView, SectionList, StyleSheet, Text } from "react-native";
-import { getMyMeetingsFromServer } from "../api/meetings/meetings.api";
-import { AllMeetings } from "../api/meetings/meetings.data";
+import {
+  createSectionData,
+  getMyMeetingsFromServer,
+} from "../api/meetings/meetings.api";
 import MeetingListItem from "../Components/MeetingsListItem";
 import { WHITE_COLOR } from "../Themes/themeColors";
-import { AllMeetings } from "../api/meetings/meetings.data";
 
 const MainScreen = (props) => {
-  const [DATA, setDATA] = React.useState(null);
+  const [meetings, setMeetings] = React.useState(null);
 
   useEffect(() => {
-    const myMeetings = getMyMeetingsFromServer();
+    const myMeetings = getMyMeetingsFromServer(); //this may take 3 sec to come back...
 
-    setDATA((prevousState) => myMeetings);
+    setMeetings((prevousState) => myMeetings);
   }, []);
 
-  if (!DATA) return <Text>No current meetings</Text>;
-  
-  const Item = ({ title }) => 
-  (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
+  if (!meetings) return <Text>Loading...</Text>;
+  if (meetings.length == 0) return <Text>No Meetings</Text>;
 
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
-        sections={AllMeetings}
-        renderSectionHeader={({ section }) => 
-        (
+        sections={createSectionData(meetings)}
+        renderSectionHeader={({ section }) => (
           <Text style={styles.SectionHeader}>{section.title}</Text>
         )}
         keyExtractor={(item, index) => item.id}
-        renderItem={({ item }) => <MeetingListItem meeting={item} />}
+        renderItem={({ item, section }) => <MeetingListItem meeting={item} />}
       />
     </SafeAreaView>
-    
   );
 };
 
@@ -63,12 +56,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   title: {
-    fontSize: 20
+    fontSize: 20,
   },
   DropDown: {
-    flexDirection: "row-reverse"
-    
-  }
+    flexDirection: "row-reverse",
+  },
 });
 
 export default MainScreen;
