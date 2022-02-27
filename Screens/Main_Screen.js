@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { SafeAreaView, SectionList, StyleSheet, Text } from "react-native";
 import { getMyMeetingsFromServer } from "../api/meetings/meetings.api";
+import { AllMeetings } from "../api/meetings/meetings.data";
 import MeetingListItem from "../Components/MeetingsListItem";
 import { WHITE_COLOR } from "../Themes/themeColors";
+import { AllMeetings } from "../api/meetings/meetings.data";
 
 const MainScreen = (props) => {
   const [DATA, setDATA] = React.useState(null);
@@ -13,21 +15,28 @@ const MainScreen = (props) => {
     setDATA((prevousState) => myMeetings);
   }, []);
 
-  console.log("Rerender");
-
-  if (!DATA) return <Text>No DATA</Text>;
+  if (!DATA) return <Text>No current meetings</Text>;
+  
+  const Item = ({ title }) => 
+  (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
-        sections={[{ title: "Math", data: DATA }]}
-        renderSectionHeader={({ section }) => (
+        sections={AllMeetings}
+        renderSectionHeader={({ section }) => 
+        (
           <Text style={styles.SectionHeader}>{section.title}</Text>
         )}
         keyExtractor={(item, index) => item.id}
         renderItem={({ item }) => <MeetingListItem meeting={item} />}
       />
     </SafeAreaView>
+    
   );
 };
 
@@ -53,6 +62,13 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
   },
+  title: {
+    fontSize: 20
+  },
+  DropDown: {
+    flexDirection: "row-reverse"
+    
+  }
 });
 
 export default MainScreen;
