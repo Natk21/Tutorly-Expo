@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 
 const MeetingListItem = ({ meeting }) => {
@@ -7,18 +8,26 @@ const MeetingListItem = ({ meeting }) => {
     console.log("Card");
   }, []);
 
+const onPress = () => {
+  //naviagte to, a displahy of the meetings detials, only pass the meeting that was pressed(as a parameter)
+  //navigation.navigate(routes.)
+}
+
   return (
     <View style={styles.Container}>
-      <Text
-        style={{ textAlign: "center" }}
-      >{`Subject: ${meeting.subject}`}</Text>
-
-      <Text>{`Time: ${meeting.time}`}</Text>
+      
+      <TouchableOpacity 
+      style={{ textAlign: "center" }} 
+      onPress = {onPress}>
       <Text>{`Subject: ${meeting.subject}`}</Text>
+      <Text>{`Time: ${meeting.time}`}</Text>
+      
+      </TouchableOpacity>
     </View>
+
   ); ///modify this line to include a view with a bunch of children stuff, so container views, and style them to represent your meeting card
 };
-//<Text>{"Subject: " + ${meeting.subject}}</Text>
+
 
 const styles = StyleSheet.create({
   Container: {

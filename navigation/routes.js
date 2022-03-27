@@ -1,14 +1,15 @@
 export default Object.freeze({
-  Login: "Login",
-  Signup: "SignUp",
-  Forgot: "ForgotPassword",
-  Main: "Main",
-  Home: "Home",
-  Account: "Account",
-  Settings: "Settings",
-  Meetings: "Meetings",
+  LoginScreen: "Login",
+  SignupScreen: "SignUp",
+  ForgotPasswordScreen: "ForgotPassword",
+  MainScreen: "Main",
+  HomeScreen: "Home",
+  ProfileScreen: "Profile",
+  SettingsScreen: "Settings",
+  MeetingsScreen: "Meetings",
   HomeStack: "HomeStack",
   ProfileStack: "ProfileStack",
   MeetingsStack: "MeetingsStack",
-  CoursesStack: "CoursesStack"
+  CoursesStack: "CoursesStack",
+  ReviewsScreen: "Reviews"
 });

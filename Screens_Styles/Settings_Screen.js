@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import routes from "../navigation/routes";
 
-const AccountScreen = (props) => {
+const SettingScreen = (props) => {
   const handleAccountPress = () => {
     navigation.navigate(routes.AccountScreen);
   };
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountScreen;
+export default SettingsScreen;

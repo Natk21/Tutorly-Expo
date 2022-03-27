@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SafeAreaView, SectionList, StyleSheet, Text } from "react-native";
+import { SafeAreaView, SectionList, StyleSheet, Text, View } from "react-native";
 import {
   createSectionData,
   getMyMeetingsFromServer,
@@ -20,6 +20,7 @@ const MainScreen = (props) => {
   if (meetings.length == 0) return <Text>No Meetings</Text>;
 
   return (
+    
     <SafeAreaView style={styles.container}>
       <SectionList
         sections={createSectionData(meetings)}
@@ -30,6 +31,13 @@ const MainScreen = (props) => {
         renderItem={({ item, section }) => <MeetingListItem meeting={item} />}
       />
     </SafeAreaView>
+
+    
+    
+
+
+    
+
   );
 };
 
