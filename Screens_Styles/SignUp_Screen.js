@@ -14,9 +14,11 @@ const SignUpScreen = (props) => {
   const { setAuthToken } = props;
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const handleForgotPasswordPress = () => console.log("Button Pressed"); //this is just the layout for function
+  const handleForgotPasswordPress = () => {
+
+  }
   console.log(Dimensions.get("screen"));
-  const icon = require("../assets/icon.png");
+  
   return (
     <View style={styles.MainScreen}>
       <View style={styles.InputArea}>

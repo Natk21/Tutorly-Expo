@@ -1,9 +1,9 @@
 class Student extends User{
-    constructor(name, age, grade, preferreduSbjects){
+    constructor(name, age, grade, preferredSubjects){
         super(name)
         super(age)
         super(grade)
-        this.subjects = preferreduSbjects
+        this.subjects = preferredSubjects
     }
 
     get getSubjects(){
@@ -13,6 +13,11 @@ class Student extends User{
     set changeSubjects(newSubjects){
         this.subjects = newSubjects
     }
+
+    
+
+
+
 
 
 

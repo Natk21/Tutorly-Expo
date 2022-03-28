@@ -33,6 +33,15 @@ class User{
         this.grade = newGrade;
         
     }
+    
+    createMeeting(){
+        
+    }
+
+    joinMeeting(){
+
+    }
+
 
 
     

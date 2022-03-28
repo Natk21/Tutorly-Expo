@@ -13,4 +13,5 @@ class Teacher extends User{
     set changeSubjects(newSubjects){
         this.subjects = newSubjects
     }
+
 }

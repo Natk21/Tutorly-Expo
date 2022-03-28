@@ -129,7 +129,7 @@ const ProfileScreen = (props) => {
         />
       </View>
 
-      <View>
+      <View style={styles.ReviewButtonContainer}>
         <TouchableOpacity
           onPress = {handleReviewPress}
         >
@@ -187,6 +187,12 @@ const styles = StyleSheet.create({
   contactInformationContainer: {
     flexDirection: "column-reverse",
     padding: 10
+  },
+  ReviewButtonContainer: {
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    padding: 10
+
   },
 });
 
