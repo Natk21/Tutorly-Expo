@@ -5,7 +5,7 @@ import AuthStack from "./navigation/authStack";
 import MainTabStack from "./navigation/mainTabStack";
 
 export default function App() {
-  const [authToken, setAuthToken] = React.useState("asdfasd");
+  const [authToken, setAuthToken] = React.useState("adfasd");
 
   return (
     <NavigationContainer

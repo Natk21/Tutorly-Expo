@@ -11,7 +11,7 @@ function HomeStack(props) {
     <Stack.Navigator initialRouteName={routes.Main}>
       <Stack.Screen
         options={{ title: "Main Page", headerShown: false }}
-        name={routes.Main}
+        name={routes.MainScreen}
         component={MainScreen}
       />
     </Stack.Navigator>
