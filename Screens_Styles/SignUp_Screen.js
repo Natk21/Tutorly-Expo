@@ -2,12 +2,15 @@ import React from "react";
 import {
   Dimensions,
   Platform,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { Button, TextInput } from "react-native-paper";
+import routes from "../navigation/routes";
 import { WHITE_COLOR } from "../Themes/themeColors";
 
 const SignUpScreen = (props) => {
@@ -15,12 +18,17 @@ const SignUpScreen = (props) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const handleForgotPasswordPress = () => {
-
+    navigation.navigate = routes.ForgotPasswordScreen
   }
-  console.log(Dimensions.get("screen"));
+  const handleLogInPress = (email, password) => {
+    if(email == email && password == password){
+      Navigation.navigate = routes.MainScreen
+    }
+  }
+  
   
   return (
-    <View style={styles.MainScreen}>
+    <SafeAreaView style={styles.MainScreen}>
       <View style={styles.InputArea}>
         <TextInput
           mode="outlined"
@@ -34,20 +42,19 @@ const SignUpScreen = (props) => {
           label="Password"
           onChangeText={(text) => setPassword(text)}
         />
-        <Text>Password or Username is wrong! </Text>
-
-        <Button
+        
+        <TouchableOpacity
           icon="camera"
           mode="contained"
-          disabled={email.length === 0 || password.length === 0}
-          onPress={() => {}}
+          disabled={email.length === 0 && password.length === 0}
+          onPress={handleLogInPress}
           style={styles.Button}
           contentStyle={styles.ButtonContent}
         >
           Log In
-        </Button>
+        </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
   Button: {
     height: 75,
     margin: 0,
-    padding: 0,
+    padding: 10,
     justifyContent: "center",
   },
   ButtonContent: {

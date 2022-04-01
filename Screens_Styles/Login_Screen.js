@@ -48,6 +48,7 @@ const LogInScreen = (props) => {
           label="Email"
           onChangeText={(text) => setEmail(text)}
         />
+        <Text>Password or Username is wrong! </Text>
         <TextInput
           mode="outlined"
           style={styles.textInput}
