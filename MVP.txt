@@ -1,12 +1,24 @@
 
 TEACHER:
-1) If your a teacher, you create a class
-2) It shows up in your home
-3) If you open the page, you get a teacher view.
+1) If your a teacher, you create a class. (you got to meetings, a press create)
+2) It shows up in your home.
+3) If you open the page, you get a teacher view. 
 
 
 
 STUDENT:
-1) Browse existing classes and add them to my classes
-2) Shows up in home
-3) If you open the page you get student view.
+1) Browse existing classes and add them to my classes. ( you go to meetings, press a meeting to see details, and sign up)
+2) Shows up in home.
+3) If you open the page you get student view. (from home)
+
+
+
+
+
+WHAT YOU ARE MISSING:
+
+2 BUTTONS ON THE MEETINGS SCREEN
+1 CREATE AS INSTURCTOR -> Launches create meetings page
+1 CREATE AS PARTICIPANT -> Laynches create meetings page
+
+DESIGN A MEETINGS PAGE BASIC -> WHEN YOU PRESS CREATE MEETING, 

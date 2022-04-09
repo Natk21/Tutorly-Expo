@@ -7,9 +7,10 @@ export default Object.freeze({
   ProfileScreen: "Profile",
   SettingsScreen: "Settings",
   MeetingsScreen: "Meetings",
+  ReviewsScreen: "Reviews",
+  ////////////////////////////////////
   HomeStack: "HomeStack",
   ProfileStack: "ProfileStack",
   MeetingsStack: "MeetingsStack",
   CoursesStack: "CoursesStack",
-  ReviewsScreen: "Reviews"
 });
