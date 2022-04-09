@@ -5,10 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
+  
 } from "react-native";
 import { TextInput } from "react-native-paper";
 import routes from "../navigation/routes";
 import {
+  BLACK_COLOR,
   BLUE_COLOR,
   PURPLE_COLOR,
   RED_COLOR,
@@ -16,127 +19,154 @@ import {
 } from "../Themes/themeColors";
 
 const ProfileScreen = (props) => {
-  const handleSettingsPress = () => {
-    navigation.navigate(routes.SettingsScreen);
-  };
-  useEffect(() => {}, []);
-  const [text, setText] = React.useState("");
-  const handleReviewPress = () => {
-    navigation.navigate(routes.ReviewsScreen);
-  };
+  let isTeacher = false;
+  const MemberSince = "January 15th 2017"
+  const Subjects = ["Math ", "Science ", "English"]
+  
 
-  const [defaultRating, setdefaultRating] = useState(0);
-  const [maxRating, setmaxRating] = useState([0, 1, 2, 3, 4, 5]);
+  const TeacherorStudent = isTeacher =>{
+    if(isTeacher){
+      return <Text>Instructor</Text> 
+    }
+    else{
+      return <Text>Student</Text> 
+    }
+  }
+  const [text, onChangeText] = useState('');
+  const [defaultRating, setdefaultRating ] = useState(2)
+  const[maxRating, setmaxRating] = useState([1,2,3,4,5])
 
-  const starImageFilled = "./asses_images/star_Filled.png";
-  const starImageNotFilled = "./asses_images/star_NotFilled.png";
+  const starImageFilled = 'https://raw.githubusercontent.com/tranhonghan/images/main/star_filled.png'
+  const starImageEmpty = 'https://raw.githubusercontent.com/tranhonghan/images/main/star_corner.png'
 
   const CustomRatingBar = () => {
-    return (
-      <View>
-        {maxRating.map((item, key) => {
-          return (
-            <TouchableOpacity
-              activeOpacity={0.7}
+    return(
+      <View style={styles.CustomRatingBarStyle}>
+        {
+          maxRating.map((item, key)=> {
+            return(
+              <TouchableOpacity
+              activeOpacity= {0.7}
               key={item}
-              onPress={() => setdefaultRating(item)}
-            >
-              <Image
-                style={styles.starImageStyle}
-                source={
-                  item <= defaultRating
-                    ? { uri: starImageFilled }
-                    : { uri: starImageNotFilled }
-                }
-              />
-            </TouchableOpacity>
-          );
-        })}
+              onPress = {() => setdefaultRating(item)}
+              >
+                <Image
+                  style={styles.starImageStyle}
+                  source={
+                    item <= defaultRating
+                      ? {uri: starImageFilled}
+                      : {uri: starImageEmpty}
+                  }
+                />
+              </TouchableOpacity>
+            )
+          })
+        }
       </View>
-    );
-  };
+    )
+  }
+  
+  return(
+    <SafeAreaView style={{flex:1}}>
+      <View style = {styles.UserProfileContainer}>
+        <CustomRatingBar/>
+        
+        <Image 
+          source={require('../assets_images/BlankProfileImage.png')}  
+          style={styles.ProfileImageStyle} 
+        />
+        
+        <TextInput
+        style = {styles.UsernameTextStyle}
+        onChangeText= {onChangeText}
+        value = {text}
+        placeholder = "Username"
+        keyboardType = "default"
+        />
+        <TextInput
+        style = {styles.PasswordTextStyle}
+        onChangeText= {onChangeText}
+        value = {text}
+        placeholder = "Password"
+        keyboardType = "default"
+        />
+        
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{flex: 1, height: 2, backgroundColor: 'black'}} />
+          <View>
+            <Text style={{width: 80, textAlign: 'center'}}>Information</Text>
+          </View>
+          <View style={{flex: 1, height: 2, backgroundColor: 'black'}} />
+        </View>
+      </View>
 
-  const mapArray = ["1", "2", "3", "4"];
+      <View style={styles.UserInformationContainer}>
+        <Text>Member Since: {MemberSince}</Text>
+        <Text>Position: {TeacherorStudent(false)}</Text>
+        <Text>Subjects: {Subjects} </Text>
 
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.TopContainer}>
-        <View style={{ backgroundColor: YELLOW_COLOR, flex: 0.25 }}></View>
-        <View style={{ backgroundColor: PURPLE_COLOR, flex: 1 }}></View>
-        {/* <Image
-          source={{
-            uri: "../asses_images/BlankProfileImage.png",
-          }}
-          style={{
-            flex: 1,
-            width: 50,
-            height: 50,
-            borderRadius: 400 / 2,
-          }}
-        /> */}
       </View>
-      <View style={styles.ProfileListContainer}>
-        {mapArray.map((item, key) => {
-          <TextInput
-            value={item}
-            key={key}
-            style={{ width: "75%" }}
-          ></TextInput>;
-        })}
-      </View>
+      
+      
     </SafeAreaView>
     //figure out how to calculate how long a user has been a member for
     //figure out how to make sure if a user is a teacher or an instructor, maybe make it part of the login process
     //make subjects part of the login process and decide how it could be a text input
     //make it so user can write stuff about themselves
   );
+    
 };
-
 const styles = StyleSheet.create({
-  TopContainer: {
+  UserProfileContainer: {
     flex: 1,
-    flexDirection: "row",
-    backgroundColor: BLUE_COLOR,
-    alignContent: "center",
+    padding: 10, 
+    justifyContent: "flex-start",
+    
+
   },
-  ProfileListContainer: {
-    flex: 1,
-    backgroundColor: RED_COLOR,
-    justifyContent: "center",
+  UserInformationContainer: {
+    flex: 2.5,
+    marginLeft: 5
+    
   },
-  SettingsContainer: {
-    flex: 1,
-    flexDirection: "row-reverse",
+  ProfileImageStyle:{
+    width: 100, 
+    height: 100, 
+    borderRadius: 100/2,
+    marginLeft: 0,
+    marginTop: 10,
+  },
+  CustomRatingBarStyle: {
     justifyContent: "flex-end",
-  },
-  MemberSince_Username_Container: {
-    flex: 1,
-    padding: 10,
-    flexDirection: "column",
-    alignItems: "center",
-    top: 20,
-  },
-  UserInfoContainer: {
-    flex: 3,
-    justifyContent: "space-evenly",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    padding: 10,
+    flexDirection: "row", 
   },
   starImageStyle: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     resizeMode: "cover",
   },
-  contactInformationContainer: {
-    flexDirection: "column-reverse",
-    padding: 10,
+  UsernameTextStyle: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 5,
+    width: 270,
+    marginTop: -90,
+    marginLeft: 100
   },
-  ReviewButtonContainer: {
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-    padding: 10,
+  PasswordTextStyle: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 5,
+    width: 270,
+    marginTop: -5,
+    marginLeft: 100
   },
+
 });
+
+
+
 
 export default ProfileScreen;

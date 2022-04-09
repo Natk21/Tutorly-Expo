@@ -1,5 +1,3 @@
-import { get } from "mongoose";
-
 class User{
 
     constructor(Fullname, age, grade){
