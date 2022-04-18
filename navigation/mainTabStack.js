@@ -19,6 +19,7 @@ function MainTabStack(props) {
         component={HomeStack}
         options={{
           tabBarLabel: "Main",
+
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -29,6 +30,7 @@ function MainTabStack(props) {
         component={ProfileStack}
         options={{
           tabBarLabel: "Profile",
+
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="pencil" color={color} size={size} />
           ),
@@ -39,6 +41,7 @@ function MainTabStack(props) {
         component={MeetingsStack}
         options={{
           tabBarLabel: "Meetings",
+
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="wifi" color={color} size={size} />
           ),
@@ -49,6 +52,7 @@ function MainTabStack(props) {
         component={CoursesStack}
         options={{
           tabBarLabel: "Learn",
+
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="wifi" color={color} size={size} />
           ),

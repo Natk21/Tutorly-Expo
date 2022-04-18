@@ -8,6 +8,7 @@ export default Object.freeze({
   SettingsScreen: "Settings",
   MeetingsScreen: "Meetings",
   ReviewsScreen: "Reviews",
+  CreateMeetingScreen: "CreateMeeting",
   ////////////////////////////////////
   HomeStack: "HomeStack",
   ProfileStack: "ProfileStack",
