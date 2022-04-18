@@ -6,3 +6,4 @@ export const BLUE_COLOR = "#2196f3";
 export const RED_COLOR = "#f44336";
 export const YELLOW_COLOR = "#ffeb3b";
 export const PURPLE_COLOR = "#9c27b0";
+

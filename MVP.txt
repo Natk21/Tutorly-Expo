@@ -22,3 +22,16 @@ WHAT YOU ARE MISSING:
 1 CREATE AS PARTICIPANT -> Laynches create meetings page
 
 DESIGN A MEETINGS PAGE BASIC -> WHEN YOU PRESS CREATE MEETING, 
+
+Proccess of creating a Meeting:
+    After logging in user is at the main page(he can join a scheduled meeting from here or view recommended meetings and add them to his existing shcedule)
+    He then goes to the Meetings page 
+        - either selects a meeting from the list 
+        -  or creates an empty meeting with just him that allows one participant to join
+            - he must specifiy subject, time, grade, and a link to his profile will be provided and he must specificy wether he is an instrcutor or student
+                - depending on the last option the meeting will then populate in the list under either instructor or student section
+    The user also has the option to go the profile page and search up a user and contact them to create a meeting(figure out nuiance of this)
+    Once the meeting is created the user goes back to the main page clicks on it and joins the meeting, the main page will be in form of a calendar where you can expand the day to see how your individual day looks, other stuf will futher be provided to allow you to see weekly schedule
+    
+
+

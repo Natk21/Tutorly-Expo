@@ -13,6 +13,9 @@ const ProfileScreen = (props) => {
   let isTeacher = false;
   const MemberSince = "January 15th 2017";
   const Subjects = ["Math ", "Science ", "English"];
+  let Age = 15
+  let School = "Riverdale Country Day"
+  let Grade = "9th"
 
   const TeacherorStudent = (isTeacher) => {
     if (isTeacher) {
@@ -21,7 +24,8 @@ const ProfileScreen = (props) => {
       return <Text>Student</Text>;
     }
   };
-  const [text, onChangeText] = React.useState("");
+  const [Usernametext, onChangeUsernameText] = React.useState("");
+  const [Passwordtext, onChangePasswordText] = React.useState("");
   const [defaultRating, setdefaultRating] = useState(2);
   const [maxRating, setmaxRating] = useState([1, 2, 3, 4, 5]);
 
@@ -67,15 +71,15 @@ const ProfileScreen = (props) => {
 
         <TextInput
           style={styles.UsernameTextStyle}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangeUsernameText}
+          value={Usernametext}
           placeholder="Username"
           keyboardType="default"
         />
         <TextInput
           style={styles.PasswordTextStyle}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={onChangePasswordText}
+          value={Passwordtext}
           placeholder="Password"
           keyboardType="default"
         />
@@ -91,9 +95,28 @@ const ProfileScreen = (props) => {
 
       <View style={styles.UserInformationContainer}>
         <Text>Member Since: {MemberSince}</Text>
+        <Text></Text>
         <Text>Position: {TeacherorStudent(false)}</Text>
+        <Text></Text>
         <Text>Subjects: {Subjects} </Text>
+        <Text></Text>
+        <Text>Age: {Age}</Text>
+        <Text></Text>
+        <Text>School: {School}</Text>
+        <Text></Text>
+        <Text>Grade Level: {Grade} </Text>
+        <Text></Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, height: 2, backgroundColor: "black" }} />
+                <View>
+                <Text style={{ width: 80, textAlign: "center" }}>Contact</Text>
+              </View>
+              <View style={{ flex: 1, height: 2, backgroundColor: "black" }} />
+        </View>
       </View>
+      <View style={styles.ContactContainer}>
+      </View>
+      
     </SafeAreaView>
     //figure out how to calculate how long a user has been a member for
     //figure out how to make sure if a user is a teacher or an instructor, maybe make it part of the login process
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   UserInformationContainer: {
-    flex: 2.5,
+    flex: 2,
     marginLeft: 5,
   },
   ProfileImageStyle: {
@@ -145,6 +168,9 @@ const styles = StyleSheet.create({
     marginTop: -5,
     marginLeft: 100,
   },
+  ContactContainer:{
+    
+  }
 });
 
 export default ProfileScreen;
