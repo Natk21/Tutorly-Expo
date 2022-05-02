@@ -12,12 +12,12 @@ function MeetingsStack(props) {
   return (
     <Stack.Navigator initialRouteName={routes.MeetingsScreen}>
       <Stack.Screen
-        options={{ title: "Main Page", headerShown: true }}
+        options={{ title: "Meetings", headerShown: true }}
         name={routes.MeetingsScreen}
         component={MeetingScreen}
       />
       <Stack.Screen
-        options={{ title: "Create", headerShown: true }}
+        options={{title: "Create Meeting",  headerShown: true }}
         name={routes.CreateMeetingScreen}
         component={CreateMeetingScreen}
       />

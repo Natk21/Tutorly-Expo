@@ -27,7 +27,7 @@ const LogInScreen = (props) => {
   const handleLogInPress = () => {
     setAuthToken("newToken");
   };
-  console.log(Dimensions.get("screen"));
+  
 
   return (
     <View style={styles.MainScreen}>
@@ -122,19 +122,4 @@ const styles = StyleSheet.create({
 
 export default LogInScreen;
 
-// const () => {
 
-//   <AppScreen>
-//   <SafeArea>
-//   {...Children}
-//   </SafeArea>
-//   </AppScreen>
-// }
-
-// const AppText =(props) => {
-//   {message, colorOfText} = props
-//   return () {
-
-//    <Text style = {textColor: colorOfText}>{message}<Text/>
-//   }
-// }
