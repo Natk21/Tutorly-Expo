@@ -40,6 +40,7 @@ const CreateMeetingScreen = ({ meeting = undefined, navigation }) => {
 
   //this function will make sure that all info is placed and then if it is, info will be pushed to server and user will go back to meeting page
   const onSubmitPress = () => {
+    
     navigation.navigate(routes.MainScreen);
   }
   
@@ -104,9 +105,9 @@ const CreateMeetingScreen = ({ meeting = undefined, navigation }) => {
         '6:00pm','6:30pm','7:00pm','7:30pm','8:00pm','8:30pm','9:00pm','9:30pm','10:00pm','10:30pm','11:00pm','11:30pm'
         ]}
         selectedIndex={1}
-        renderItem={(data, index) => {
+        renderItem={(_subjects, index) => {
         }}
-        onValueChange={(data, selectedIndex) => {
+        onValueChange={(_subjects, selectedIndex) => {
         }}
         wrapperHeight={180}
         wrapperWidth={150}
@@ -126,9 +127,9 @@ const CreateMeetingScreen = ({ meeting = undefined, navigation }) => {
         '6:00pm','6:30pm','7:00pm','7:30pm','8:00pm','8:30pm','9:00pm','9:30pm','10:00pm','10:30pm','11:00pm','11:30pm'
         ]}
         selectedIndex={1}
-        renderItem={(data, index) => {
+        renderItem={(_subjects, index) => {
         }}
-        onValueChange={(data, selectedIndex) => {
+        onValueChange={(_subjects, selectedIndex) => {
         }}
         wrapperHeight={180}
         wrapperWidth={150}
